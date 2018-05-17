@@ -8,4 +8,4 @@
 
 ## Usage
 
-  $ nodexec say:hello -w world
+    $ nodexec say:hello -w world
