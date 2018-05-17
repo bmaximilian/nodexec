@@ -5,7 +5,7 @@ function parseOptions(optionArray) {
   let buffer = {};
   let optionAccumulator = {
     param: null,
-    value: null,
+    value: true,
   };
 
   if (!isArray(optionArray)) {
@@ -25,7 +25,7 @@ function parseOptions(optionArray) {
 
       optionAccumulator = {
         param: null,
-        value: null,
+        value: true,
       };
     }
   });
