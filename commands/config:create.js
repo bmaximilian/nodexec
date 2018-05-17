@@ -1,14 +1,20 @@
 const fs = require('fs');
+const mkdirp = require('mkdirp');
+const path = require('path');
 const { userConfig: userConfigPath } = require('../src/util/paths');
 
 function createConfig(options) {
   const initialConfig = {};
 
   if (!fs.existsSync(userConfigPath) || options['-f'] || options['--force']) {
-    fs.writeFile(userConfigPath, JSON.stringify(initialConfig), function (err) {
-      if (err) throw err;
+    mkdirp(path.dirname(userConfigPath), (mkdirError) => {
+      if (mkdirError) throw mkdirError;
 
-      console.log(`${userConfigPath} written successfully.`);
+      fs.writeFile(userConfigPath, JSON.stringify(initialConfig), (writeError) => {
+        if (writeError) throw writeError;
+
+        console.log(`${userConfigPath} written successfully.`);
+      });
     });
   } else if (!options['--silent'] && !options['-s']) {
     console.log(`There is already a config at ${userConfigPath}.`);
