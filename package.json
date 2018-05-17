@@ -1,6 +1,6 @@
 {
-  "name": "nrun",
-  "version": "0.0.1",
+  "name": "nodexec",
+  "version": "0.0.2",
   "description": "",
   "main": "index.js",
   "scripts": {
