@@ -9,6 +9,8 @@ const commands = getCommands();
 if (isFunction(get(commands, command))) {
   commands[command](parseOptions(options))
 } else {
+  console.log('Nodexec');
+  console.log();
   console.log(`No command found for ${command}`);
   console.log();
   console.log('Available commands:');

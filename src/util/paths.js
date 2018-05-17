@@ -17,5 +17,5 @@ module.exports = {
   appDirectory,
   resolvePathFromApp,
   baseConfig: resolvePathFromApp('baseConfig.json'),
-  userConfig: `${os.homedir()}/.nexec/config.json`,
+  userConfig: `${os.homedir()}/.nodexec/config.json`,
 };
