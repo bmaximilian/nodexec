@@ -1,13 +1,15 @@
 {
   "name": "nodexec",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "postinstall": "node index.js config:create --silent"
   },
-  "author": "",
+  "preferGlobal": true,
+  "bin": "./index.js",
+  "author": "Maximilian Beck <contact@maximilianbeck.de>",
   "license": "ISC",
   "dependencies": {
     "glob": "^7.1.2",

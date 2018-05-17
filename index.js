@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 
 const { isFunction, get, keys } = require('lodash');
 const getCommands = require('./src/getCommands');
