@@ -2,7 +2,8 @@ const fs = require('fs');
 const path = require('path');
 const os = require('os');
 
-const appDirectory = fs.realpathSync(process.cwd());
+const [ nodePath, indexFilePath ] = process.argv;
+const appDirectory = path.dirname(indexFilePath);
 
 /**
  * Resolves a path in the app directory

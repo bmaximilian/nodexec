@@ -12,8 +12,12 @@ if (isFunction(get(commands, command))) {
 } else {
   console.log('Nodexec');
   console.log();
-  console.log(`No command found for ${command}`);
-  console.log();
+
+  if (command) {
+    console.log(`No command found for ${command}`);
+    console.log();
+  }
+
   console.log('Available commands:');
   keys(commands).forEach((command) => {
     console.log(`\t${command}`);
