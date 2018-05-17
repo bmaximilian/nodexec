@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const os = require('os');
 
 const appDirectory = fs.realpathSync(process.cwd());
 
@@ -16,5 +17,5 @@ module.exports = {
   appDirectory,
   resolvePathFromApp,
   baseConfig: resolvePathFromApp('baseConfig.json'),
-  userConfig: path.resolve('~', '.nrun/config.json'),
+  userConfig: `${os.homedir()}/.nexec/config.json`,
 };

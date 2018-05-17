@@ -1,5 +1,5 @@
 
-const { assign } = require('lodash');
+const { isArray, assign, includes } = require('lodash');
 const fs = require('fs');
 const { baseConfig: baseConfigPath, userConfig: userConfigPath } = require('./util/paths');
 const baseConfig = require(baseConfigPath);
@@ -10,7 +10,17 @@ if (fs.existsSync(userConfigPath)) {
 }
 
 function mergeConfig() {
-  return assign({}, baseConfig, userConfig);
+  const mergedConfig = baseConfig;
+
+  if (isArray(mergedConfig.directories) && isArray(userConfig.directories)) {
+    userConfig.directories.forEach((directory) => {
+      if (!includes(mergedConfig.directories, directory)) {
+        mergedConfig.directories.push(directory);
+      }
+    });
+  }
+
+  return assign({}, userConfig, mergedConfig);
 }
 
 module.exports = mergeConfig;
