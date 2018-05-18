@@ -2,6 +2,7 @@
 const glob = require('glob');
 const path = require('path');
 const os = require('os');
+const { isFunction, isObject, get } = require('lodash');
 const isRelativePath = require('./util/isRelativePath');
 const resolveFileNameFromPathWithoutEnding = require('./util/resolveFileNameFromPathWithoutEnding');
 const { resolvePathFromApp } = require('./util/paths');
@@ -17,10 +18,29 @@ function importFolder(folderDir) {
   }
 
   glob.sync(`${importPath}/**/*.js`).forEach((file) => {
-    const command = require(path.resolve(file));
+    const requiredCommandObject = require(path.resolve(file));
     const commandName = resolveFileNameFromPathWithoutEnding(file);
+    let commandObject = null;
 
-    commands[commandName] = command;
+    if (isFunction(requiredCommandObject)) {
+      commandObject = {
+        command: requiredCommandObject,
+        name: commandName,
+        description: '',
+        scope: '/',
+      };
+    } else if (isObject(requiredCommandObject) && isFunction(requiredCommandObject.command)) {
+      commandObject = {
+        command: requiredCommandObject.command,
+        name: commandName,
+        description: get(requiredCommandObject, 'description', ''),
+        scope: get(requiredCommandObject, 'scope', '/'),
+      };
+    }
+
+    if (commandObject) {
+      commands[commandName] = commandObject;
+    }
   });
 
   return commands;

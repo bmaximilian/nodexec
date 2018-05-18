@@ -1,6 +1,7 @@
 # Tasks
 Todos are specified here
 
+* Sort commands by scope
 * Create test setup (mocha, chai, istanbul)
 * Write tests for the functions
 * Create CI hook (travis)

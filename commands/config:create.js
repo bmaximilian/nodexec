@@ -22,4 +22,7 @@ function createConfig(options) {
   }
 }
 
-module.exports = createConfig;
+module.exports = {
+  description: 'Creates the config directory in the user home and adds a empty config file.',
+  command: createConfig,
+};
