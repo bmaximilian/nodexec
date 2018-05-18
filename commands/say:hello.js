@@ -3,4 +3,7 @@
 *
 */
 
-module.exports = () => console.log('Hello World!');
+module.exports = {
+  command: () => console.log('Hello World!'),
+  scope: '/test',
+}
