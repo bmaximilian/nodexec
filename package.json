@@ -12,6 +12,7 @@
   "author": "Maximilian Beck <contact@maximilianbeck.de>",
   "license": "ISC",
   "dependencies": {
+    "chalk": "^2.4.1",
     "glob": "^7.1.2",
     "lodash": "^4.17.10",
     "mkdirp": "^0.5.1"

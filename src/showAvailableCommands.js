@@ -1,5 +1,6 @@
 
 const { assign, sortBy, keys, isEmpty, isString } = require('lodash');
+const chalk = require('chalk');
 
 
 function getTabsForLevel(level) {
@@ -41,22 +42,23 @@ function showAvailableCommands(commands) {
   const sortedCommands = sortCommandsByScope(commands);
   let currentScope = '';
 
-  console.log('Available commands:');
+  console.log(chalk.magenta('Available commands:'));
+  console.log();
 
   sortedCommands.forEach((commandObject) => {
     const tabs = getTabsForLevel(commandObject.level);
 
     if (commandObject.scope !== currentScope) {
       console.log();
-      console.log(`${tabs}${commandObject.scope}`);
+      console.log(`${tabs}${chalk.magenta(commandObject.scope)}`);
 
       currentScope = commandObject.scope;
     }
 
     if (isEmpty(commandObject.description)) {
-      console.log(`\t${tabs}${commandObject.name}`);
+      console.log(`\t${tabs}${chalk.blue(commandObject.name)}`);
     } else {
-      console.log(`\t${tabs}${commandObject.name}\t- ${commandObject.description}`);
+      console.log(`\t${tabs}${chalk.blue(commandObject.name)}\t- ${chalk.white(commandObject.description)}`);
     }
   });
 }
