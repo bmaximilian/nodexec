@@ -2,8 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const os = require('os');
 
-const [ nodePath, indexFilePath ] = process.argv;
-const appDirectory = path.dirname(indexFilePath);
+const appDirectory = path.resolve(__dirname, '../..');
 
 /**
  * Resolves a path in the app directory
