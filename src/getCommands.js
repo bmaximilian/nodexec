@@ -1,16 +1,15 @@
-const { isArray, assign } = require('lodash');
-const mergeConfig = require('./mergeConfig');
+const { isArray, assign, get } = require('lodash');
 const importFolder = require('./importFolder');
 
-function getCommands() {
-  const config = mergeConfig();
+function getCommands(config) {
   let commands = {};
+  const directories = get(config, 'directories', []);
 
-  if (!isArray(config.directories)) {
+  if (!isArray(directories)) {
     throw new Error('directories must be an array');
   }
 
-  config.directories.forEach((directory) => {
+  directories.forEach((directory) => {
     commands = assign(
       commands,
       importFolder(directory),

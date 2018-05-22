@@ -1,6 +1,6 @@
 {
   "name": "nodexec",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -10,7 +10,7 @@
   "preferGlobal": true,
   "bin": "./index.js",
   "author": "Maximilian Beck <contact@maximilianbeck.de>",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "chalk": "^2.4.1",
     "glob": "^7.1.2",
