@@ -1,7 +1,7 @@
 {
   "name": "nodexec",
-  "version": "0.4.1",
-  "description": "",
+  "version": "0.4.2",
+  "description": "A command line executor for javascript files.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -10,6 +10,23 @@
   "preferGlobal": true,
   "bin": "./index.js",
   "author": "Maximilian Beck <contact@maximilianbeck.de>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bmaximilian/nodexec.git"
+  },
+  "keywords": [
+    "executor",
+    "bmaximilian",
+    "javascript",
+    "node",
+    "server",
+    "cli",
+    "commands"
+  ],
+  "bugs": {
+    "url": "https://github.com/bmaximilian/nodexec/issues"
+  },
+  "homepage": "https://github.com/bmaximilian/nodexec#readme",
   "license": "MIT",
   "dependencies": {
     "chalk": "^2.4.1",
