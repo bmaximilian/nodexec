@@ -43,7 +43,7 @@ Example:
 
 ## Creating a command
 
-You should write your command in **CommonJS**. Nothing will be compiled or transpiled.
+You should write your command in **ES5**. Nothing will be compiled or transpiled.
 
 I recommend creating a project whith a `commands/` subdirectory where all the js files for the commands are stored.
 The path specified in `config.json.directories` should point to that `commands/` directory.
@@ -81,3 +81,40 @@ The description of the command which is displayed in the help function where eve
 The namespace of the command. (only important for the help function).
 The namespace specifies a bit of the sort order and prevents overriding commands with a different namespace.
 Namespaces can be nested by separating them with a slash (`/`)
+
+
+## Contributing
+
+If you also want to do your part to this package, you are free to do that.
+Clone the repository:
+
+    $ git clone git@github.com:bmaximilian/nodexec.git
+    
+You need to `cd` into the project directory:
+
+    $ cd nodexec
+
+Then you should run the setup script:
+
+    $ setup/00-setup.sh
+    
+You can't commit to the master branch and it is recommended to open a new branch for every feature (or bug fix).
+The branch name could be a version number or something like that.
+Create a new branch:
+
+    $ git branch branch_name
+    $ git push --set-upstream origin/branch_name
+    
+**Open the project in your favorite editor and start coding** :relieved:
+
+Commit your changes as often as you can:
+
+    $ git add .
+    $ git commit -m "branch_name: my_changes_in_this_commit"
+
+Push your commits to save everything on GitHub:
+
+    $ git push
+    
+If you think that your bug fix or new feature is finished, open a [Pull Request at GitHub](https://github.com/bmaximilian/nodexec/pulls)
+and some of the Owners/Administrators will review and merge it.

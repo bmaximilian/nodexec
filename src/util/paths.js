@@ -1,4 +1,3 @@
-const fs = require('fs');
 const path = require('path');
 const os = require('os');
 
@@ -10,12 +9,12 @@ const appDirectory = path.resolve(__dirname, '../..');
  * @return {string} : The absolute path
  */
 function resolvePathFromApp(relativePath) {
-  return path.resolve(appDirectory, relativePath);
+    return path.resolve(appDirectory, relativePath);
 }
 
 module.exports = {
-  appDirectory,
-  resolvePathFromApp,
-  baseConfig: resolvePathFromApp('baseConfig.json'),
-  userConfig: `${os.homedir()}/.nodexec/config.json`,
+    appDirectory,
+    resolvePathFromApp,
+    baseConfig: resolvePathFromApp('baseConfig.json'),
+    userConfig: `${os.homedir()}/.nodexec/config.json`,
 };
