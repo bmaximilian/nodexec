@@ -1,8 +1,7 @@
 # Tasks
 Todos are specified here
 
-* Create test setup (mocha, chai, istanbul)
 * Write tests for the functions
-* Create CI hook (travis)
-* Write a cool looking and understandable readme
+* Create CI hook (travis, coveralls)
+* Add commands to modify the config and create command templates (make:command, add:dir, list:dir, remove:dir)
 * Release v1.0.0
