@@ -8,7 +8,7 @@ const { describe, it } = require('mocha');
 const { expect } = require('chai');
 const resolveFileNameWithoutEnding = require('../resolveFileNameWithoutEnding');
 
-describe('paths', () => {
+describe('resolveFileNameWithoutEnding', () => {
     it('Should be a function', () => {
         expect(resolveFileNameWithoutEnding).to.be.an.instanceOf(Function);
     });

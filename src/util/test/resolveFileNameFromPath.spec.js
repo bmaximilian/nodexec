@@ -8,7 +8,7 @@ const { describe, it } = require('mocha');
 const { expect } = require('chai');
 const resolveFileNameFromPath = require('../resolveFileNameFromPath');
 
-describe('paths', () => {
+describe('resolveFileNameFromPath', () => {
     it('Should be a function', () => {
         expect(resolveFileNameFromPath).to.be.an.instanceOf(Function);
     });

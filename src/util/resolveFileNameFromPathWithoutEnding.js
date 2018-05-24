@@ -1,3 +1,5 @@
+
+const { isString } = require('lodash');
 const resolveFileNameWithoutEnding = require('./resolveFileNameWithoutEnding');
 const resolveFileNameFromPath = require('./resolveFileNameFromPath');
 
@@ -8,7 +10,9 @@ const resolveFileNameFromPath = require('./resolveFileNameFromPath');
  * @returns {String} : The file name without ending (format)
  */
 function resolveFileNameFromPathWithoutEnding(path) {
-    return resolveFileNameWithoutEnding(resolveFileNameFromPath(path));
+    const fileName = resolveFileNameFromPath(path);
+
+    return resolveFileNameWithoutEnding(isString(fileName) ? fileName : '');
 }
 
 module.exports = resolveFileNameFromPathWithoutEnding;
