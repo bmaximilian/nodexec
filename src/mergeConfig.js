@@ -16,20 +16,40 @@ if (fs.existsSync(userConfigPath)) {
 
 /**
  * Merges the configuration files
+ * @param {Object} base : Object : The base configuration
+ * @param {Object} merge : Object : The config that should be merged
  * @return {Object} : The merged configuration
  */
-function mergeConfig() {
-    const mergedConfig = baseConfig;
+function mergeConfig(base = baseConfig, merge = userConfig) {
+    if (!isObject(base)) {
+        throw new Error('Parameter 1 needs to ba an object');
+    }
 
-    if (isArray(mergedConfig.directories) && isObject(userConfig) && isArray(userConfig.directories)) {
-        userConfig.directories.forEach((directory) => {
+    if (merge && !isObject(merge)) {
+        throw new Error('Parameter 2 needs to ba an object when provided');
+    }
+
+    const mergedConfig = base;
+
+    if (isArray(mergedConfig.directories) && isObject(merge) && isArray(merge.directories)) {
+        merge.directories.forEach((directory) => {
             if (!includes(mergedConfig.directories, directory)) {
                 mergedConfig.directories.push(directory);
             }
         });
     }
 
-    return assign({}, userConfig, mergedConfig);
+    return assign(
+        {},
+        mergedConfig,
+        assign(
+            {},
+            merge,
+            {
+                directories: mergedConfig.directories,
+            },
+        ),
+    );
 }
 
 module.exports = mergeConfig;

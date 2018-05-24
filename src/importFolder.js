@@ -2,7 +2,12 @@
 const glob = require('glob');
 const path = require('path');
 const os = require('os');
-const { isFunction, isObject, get } = require('lodash');
+const {
+    isFunction,
+    isString,
+    isObject,
+    get,
+} = require('lodash');
 const isRelativePath = require('./util/isRelativePath');
 const resolveFileNameFromPathWithoutEnding = require('./util/resolveFileNameFromPathWithoutEnding');
 const { resolvePathFromApp } = require('./util/paths');
@@ -14,6 +19,10 @@ const { resolvePathFromApp } = require('./util/paths');
  * @returns {Object} : The imported commands
  */
 function importFolder(folderDir) {
+    if (!isString(folderDir)) {
+        throw new Error('The passed parameter must be a string');
+    }
+
     /* eslint-disable import/no-dynamic-require, global-require */
     let importPath = folderDir;
     const commands = {};
