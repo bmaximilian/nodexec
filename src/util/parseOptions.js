@@ -20,8 +20,9 @@ function parseOptions(optionArray) {
         throw new Error('Options must be passed as array');
     }
 
+    let isEven = true;
     optionArray.forEach((option, i) => {
-        optionAccumulator[i % 2 === 0 ? 'param' : 'value'] = option;
+        optionAccumulator[isEven ? 'param' : 'value'] = option;
 
         if (option.charAt(0) === '-' && (i === optionArray.length - 1 || optionArray[i + 1].charAt(0) === '-')) {
             optionAccumulator.value = true;
@@ -35,6 +36,8 @@ function parseOptions(optionArray) {
                 param: option,
                 value: option,
             };
+        } else {
+            isEven = !isEven;
         }
 
         if (optionAccumulator.value !== null && optionAccumulator.param !== null) {
