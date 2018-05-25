@@ -1,5 +1,10 @@
 # Nodexec
 
+[![Build Status](https://travis-ci.org/bmaximilian/nodexec.svg?branch=master)](https://travis-ci.org/bmaximilian/nodexec)
+[![Coverage Status](https://coveralls.io/repos/github/bmaximilian/nodexec/badge.svg?branch=master)](https://coveralls.io/github/bmaximilian/nodexec?branch=master)
+[![npm](https://img.shields.io/npm/v/nodexec.svg)](https://www.npmjs.com/package/nodexec)
+[![License](https://img.shields.io/github/license/bmaximilian/nodexec.svg)](https://github.com/bmaximilian/nodexec/blob/master/LICENSE)
+
 A command line executor for javascript files.
 
 > Build better cli commands with JavaScript
