@@ -4,7 +4,7 @@
   "description": "A command line executor for javascript files.",
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/.bin/nyc ./node_modules/.bin/mocha './src/**/*.spec.js'",
+    "test": "./node_modules/.bin/nyc ./node_modules/.bin/mocha './src/**/*.spec.js' './commandHelper/**/*.spec.js'",
     "lint": "./node_modules/.bin/eslint --format './node_modules/eslint-friendly-formatter/index.js' .",
     "ci": "npm run lint && npm test",
     "coverage:coveralls": "./node_modules/.bin/nyc report --reporter=text-lcov | ./node_modules/coveralls/bin/coveralls.js",
