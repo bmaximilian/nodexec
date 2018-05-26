@@ -7,7 +7,7 @@ const sortCommandsByScope = require('./util/sortCommandsByScope');
 /**
  * Logs a list of available commands
  *
- * @param {Object[]} commands : Object[] : All commands that should be shown
+ * @param {Object} commands : Object : All commands that should be shown
  * @returns {void}
  */
 function showAvailableCommands(commands) {

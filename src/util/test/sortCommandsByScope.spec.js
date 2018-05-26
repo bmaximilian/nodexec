@@ -11,7 +11,7 @@ const sortCommandsByScope = require('../sortCommandsByScope');
 /**
  * Executes the function
  * @param {*} params : *
- * @returns {function(): Array} : The sorted commands
+ * @returns {function(): Object} : The sorted commands
  */
 const execution = (...params) => () => sortCommandsByScope(...params);
 
@@ -20,8 +20,8 @@ describe('sortCommandsByScope', () => {
         expect(sortCommandsByScope).to.be.an.instanceOf(Function);
     });
 
-    it('Should throw when no array is specified', () => {
-        expect(execution([])).not.to.throw();
+    it('Should throw when no object is specified', () => {
+        expect(execution({})).not.to.throw();
         expect(execution(true)).to.throw();
         expect(execution(null)).to.throw();
         expect(execution('test')).to.throw();
