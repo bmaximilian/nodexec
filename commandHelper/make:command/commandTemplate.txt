@@ -1,16 +1,17 @@
 
 /**
- * Create a command from a template in the current folder or the specified folder
+ * <commandName>
+ *
  * @param {Object} options : Object : The parsed options from process.argv
  * @param {Object} config : Object : The configuration from ~/.nodexec/config.json
  * @param {Object} command : Object : The exported command from this directory
  * @returns {void}
  */
-function <commandName>(options, config, command) {
-    // TODO: Implement the command
+function command(options, config, command) {
+    // TODO: Implement the <commandName> command
 }
 
 module.exports = {
-    description: '<commandDescription>',
-    command: <commandName>,
+    command,
+    description: '',
 };

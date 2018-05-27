@@ -4,9 +4,13 @@
  * @author Maximilian Beck <maximilian.beck@wtl.de>
  */
 
-const { isEmpty } = require('lodash');
+const { isEmpty, get, replace } = require('lodash');
 const chalk = require('chalk');
+const fs = require('fs');
+const path = require('path');
+const mkdirp = require('mkdirp');
 const getDirectory = require('../commandHelper/make:command/getDirectory');
+const { resolvePathFromApp } = require('../src/util/paths');
 
 /**
  * Show the help output
@@ -33,8 +37,43 @@ function makeCommand(options) {
     }
 
     const directory = getDirectory(options);
+    const commandName = get(options, 'params[0]');
+    const template = resolvePathFromApp('commandHelper/make:command/commandTemplate.txt');
 
-    console.log(directory);
+    fs.readFile(template, 'utf8', (readError, data) => {
+        if (readError) throw readError;
+
+        const replacedTemplate = replace(
+            data,
+            new RegExp('<commandName>', 'g'),
+            commandName,
+        );
+
+        /**
+         * writes the new command
+         * @return {void}
+         */
+        const writeOut = () => {
+            fs.writeFile(path.resolve(directory, `${commandName}.js`), replacedTemplate, (writeError) => {
+                if (writeError) throw writeError;
+
+                console.log(chalk.white('Created command ')
+                    + chalk.blue(commandName)
+                    + chalk.white(' in directory ')
+                    + chalk.magenta(directory));
+            });
+        };
+
+        if (!fs.existsSync(directory)) {
+            mkdirp(directory, (mkdirError) => {
+                if (mkdirError) throw mkdirError;
+
+                writeOut();
+            });
+        } else {
+            writeOut();
+        }
+    });
 }
 
 module.exports = {
