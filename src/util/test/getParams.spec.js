@@ -11,7 +11,7 @@ const getParams = require('../getParams');
 /**
  * Executes the function
  * @param {*} args : *
- * @returns {function(): any} : The param
+ * @returns {function(): String} : The param
  */
 const execution = (...args) => () => getParams(...args);
 
