@@ -4,13 +4,19 @@
  * @author Maximilian Beck <maximilian.beck@wtl.de>
  */
 
-const { isEmpty, get, replace } = require('lodash');
+const {
+    isEmpty,
+    get,
+    replace,
+    keys,
+} = require('lodash');
 const chalk = require('chalk');
 const fs = require('fs');
 const path = require('path');
 const mkdirp = require('mkdirp');
 const getDirectory = require('../commandHelper/make:command/getDirectory');
 const { resolvePathFromApp } = require('../src/util/paths');
+const toCamelCase = require('../src/util/toCamelCase');
 
 /**
  * Show the help output
@@ -43,11 +49,19 @@ function makeCommand(options) {
     fs.readFile(template, 'utf8', (readError, data) => {
         if (readError) throw readError;
 
-        const replacedTemplate = replace(
-            data,
-            new RegExp('<commandName>', 'g'),
+        let replacedTemplate = data;
+        const replaceParams = {
             commandName,
-        );
+            commandFunction: toCamelCase(commandName),
+        };
+
+        keys(replaceParams).forEach((replaceKey) => {
+            replacedTemplate = replace(
+                data,
+                new RegExp(`<${replaceKey}>`, 'g'),
+                replaceParams[replaceKey],
+            );
+        });
 
         /**
          * writes the new command

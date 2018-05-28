@@ -7,11 +7,12 @@
  * @param {Object} command : Object : The exported command from this directory
  * @returns {void}
  */
-function command(options, config, command) {
+function <commandFunction>(options, config, command) {
     // TODO: Implement the <commandName> command
 }
 
 module.exports = {
-    command,
+    <commandFunction>,
     description: '',
+    scope: '/',
 };
