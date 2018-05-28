@@ -57,7 +57,7 @@ function makeCommand(options) {
 
         keys(replaceParams).forEach((replaceKey) => {
             replacedTemplate = replace(
-                data,
+                replacedTemplate,
                 new RegExp(`<${replaceKey}>`, 'g'),
                 replaceParams[replaceKey],
             );
