@@ -12,7 +12,7 @@ function <commandFunction>(options, config, command) {
 }
 
 module.exports = {
-    <commandFunction>,
+    command: <commandFunction>,
     description: '',
     scope: '/',
 };
