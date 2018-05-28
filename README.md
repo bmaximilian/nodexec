@@ -58,6 +58,10 @@ Helper functions and node_modules should not be called with `nodexec`)
 The name of the file in the `commands` directory will be also the name of the `nodexec` command. (i.e. `hello-world.js` can be called with `nodexec hello-world`).
 Every character after the command name (`process.argv`) will be parsed into an options object and is passed to the first argument of the function.
 
+The following command will create a js file from a command template:
+
+    $ nodexec make:command <command_name> [-d]
+
 ### Interface
 
 The command should be oriented at the following interface:
@@ -84,8 +88,10 @@ The description of the command which is displayed in the help function where eve
 #### Scope
 
 The namespace of the command. (only important for the help function).
-The namespace specifies a bit of the sort order and prevents overriding commands with a different namespace.
-Namespaces can be nested by separating them with a slash (`/`)
+The namespace specifies a bit of the sort order. It does not prevent overriding commands with a different namespace.
+Namespaces can be nested by separating them with a slash (`/`).
+
+Every command is called without a namespace.
 
 
 ## Contributing

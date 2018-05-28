@@ -9,6 +9,7 @@ const {
     get,
     replace,
     keys,
+    has,
 } = require('lodash');
 const chalk = require('chalk');
 const fs = require('fs');
@@ -37,7 +38,7 @@ function showHelp() {
  * @returns {void}
  */
 function makeCommand(options) {
-    if (isEmpty(options) || isEmpty(options.params)) {
+    if (isEmpty(options) || isEmpty(options.params) || has(options, '-h') || has(options, '--help')) {
         showHelp();
         return;
     }
