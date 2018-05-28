@@ -4,24 +4,26 @@
  * @author Maximilian Beck <maximilian.beck@wtl.de>
  */
 
-const { has, get, isObject } = require('lodash');
+const { isObject } = require('lodash');
 const path = require('path');
 const isRelativePath = require('../../src/util/isRelativePath');
+const getParams = require('./getParams');
 
 /**
  * Resolves the file directory
  * @param {Object} options : Object : The options
+ * @param {Array} params : Array : The params to get the directory from
  * @returns {String} : The desired directory
  */
-module.exports = function getDirectory(options) {
+module.exports = function getDirectory(options, params = ['-d', '--directory']) {
     if (!isObject(options)) {
         throw new Error('Parameter 1 must be of type object');
     }
 
-    let directory = process.cwd();
+    let directory = getParams(options, params);
 
-    if (has(options, '-d') || has(options, '--directory')) {
-        directory = get(options, '-d', get(options, '--directory', directory));
+    if (!directory) {
+        directory = process.cwd();
     }
 
     if (isRelativePath(directory)) {
