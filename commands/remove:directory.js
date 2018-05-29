@@ -37,8 +37,9 @@ function showHelp() {
 function removeDirectory(options, config, command) {
     const userConfig = getUserConfig();
     if (!has(options, 'params') || !isArray(options.params) || isEmpty(options.params)) {
-        console.error('No config specified');
+        console.error(chalk.red('No config specified'));
         showHelp();
+        process.exit(1);
         return;
     }
 
@@ -50,9 +51,10 @@ function removeDirectory(options, config, command) {
     console.log();
 
     if (!userConfig) {
-        console.error(`No user config exists at ${userConfigPath}`);
+        console.error(`No user config exists at ${chalk.red(userConfigPath)}`);
         console.error();
         console.error('Run nodexec config:create to create a configuration file');
+        process.exit(1);
         return;
     }
 

@@ -38,7 +38,15 @@ function showHelp() {
  * @returns {void}
  */
 function makeCommand(options) {
-    if (isEmpty(options) || isEmpty(options.params) || has(options, '-h') || has(options, '--help')) {
+    if (isEmpty(options) || isEmpty(options.params)) {
+        console.error(chalk.red('No command specified'));
+        console.error();
+        showHelp();
+        process.exit(1);
+        return;
+    }
+
+    if (has(options, '-h') || has(options, '--help')) {
         showHelp();
         return;
     }
