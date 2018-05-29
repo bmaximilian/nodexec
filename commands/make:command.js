@@ -53,7 +53,7 @@ function makeCommand(options) {
 
     const directory = getDirectory(options);
     const commandName = get(options, 'params[0]');
-    const template = resolvePathFromApp('commandHelper/make:command/commandTemplate.txt');
+    const template = resolvePathFromApp('src/commandHelper/make:command/commandTemplate.txt');
 
     fs.readFile(template, 'utf8', (readError, data) => {
         if (readError) throw readError;
