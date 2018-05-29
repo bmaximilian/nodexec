@@ -5,7 +5,7 @@ const { userConfig: userConfigPath } = require('../src/util/paths');
 const getUserConfig = require('../commandHelper/getUserConfig');
 
 /**
- * list:directories
+ * list:dirs
  *
  * @param {Object} options : Object : The parsed options from process.argv
  * @param {Object} config : Object : The configuration from ~/.nodexec/config.json

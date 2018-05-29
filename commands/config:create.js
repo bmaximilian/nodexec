@@ -16,7 +16,7 @@ function createConfig(options) {
         mkdirp(path.dirname(userConfigPath), (mkdirError) => {
             if (mkdirError) throw mkdirError;
 
-            fs.writeFile(userConfigPath, JSON.stringify(initialConfig), (writeError) => {
+            fs.writeFile(userConfigPath, JSON.stringify(initialConfig, null, 2), (writeError) => {
                 if (writeError) throw writeError;
 
                 console.log(`${userConfigPath} written successfully.`);

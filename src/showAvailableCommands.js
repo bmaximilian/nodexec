@@ -30,7 +30,17 @@ function showAvailableCommands(commands) {
         if (isEmpty(commandObject.description)) {
             console.log(`\t${tabs}${chalk.blue(commandObject.name)}`);
         } else {
-            console.log(`\t${tabs}${chalk.blue(commandObject.name)}\t- ${chalk.white(commandObject.description)}`);
+            const commandName = chalk.blue(commandObject.name);
+            const commandDescription = chalk.white(commandObject.description);
+            let spacing = '\t\t';
+
+            if (commandObject.name.length > 13) {
+                spacing = '\t';
+            }
+
+            const commandString = `${commandName}${spacing}- ${commandDescription}`;
+
+            console.log(`\t${tabs}${commandString}`);
         }
     });
 }
