@@ -15,7 +15,7 @@ const chalk = require('chalk');
 const fs = require('fs');
 const path = require('path');
 const mkdirp = require('mkdirp');
-const getDirectory = require('../commandHelper/make:command/getDirectory');
+const getDirectory = require('../src/commandHelper/make:command/getDirectory');
 const { resolvePathFromApp } = require('../src/util/paths');
 const toCamelCase = require('../src/util/toCamelCase');
 

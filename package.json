@@ -66,6 +66,9 @@
     "include": [
       "./src/**/*.js"
     ],
+    "exclude": [
+      "./src/commandHelper/**/*.js"
+    ],
     "extension": [
       ".js"
     ],

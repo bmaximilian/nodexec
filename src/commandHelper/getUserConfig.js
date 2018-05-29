@@ -5,7 +5,7 @@
  */
 
 const fs = require('fs');
-const { userConfig: userConfigPath } = require('../src/util/paths');
+const { userConfig: userConfigPath } = require('../util/paths');
 
 /**
  * Returns the user config

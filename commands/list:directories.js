@@ -2,7 +2,7 @@
 const { get, isArray } = require('lodash');
 const chalk = require('chalk');
 const { userConfig: userConfigPath } = require('../src/util/paths');
-const getUserConfig = require('../commandHelper/getUserConfig');
+const getUserConfig = require('../src/commandHelper/getUserConfig');
 
 /**
  * list:dirs

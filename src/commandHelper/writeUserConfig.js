@@ -7,7 +7,7 @@
 const fs = require('fs');
 const mkdirp = require('mkdirp');
 const path = require('path');
-const { userConfig: userConfigPath } = require('../src/util/paths');
+const { userConfig: userConfigPath } = require('../util/paths');
 
 /**
  * Creates the user config

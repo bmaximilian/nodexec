@@ -10,9 +10,9 @@ const glob = require('glob');
 const fs = require('fs');
 const chalk = require('chalk');
 const { userConfig: userConfigPath } = require('../src/util/paths');
-const getDirectory = require('../commandHelper/make:command/getDirectory');
-const getUserConfig = require('../commandHelper/getUserConfig');
-const writeUserConfig = require('../commandHelper/writeUserConfig');
+const getDirectory = require('../src/commandHelper/make:command/getDirectory');
+const getUserConfig = require('../src/commandHelper/getUserConfig');
+const writeUserConfig = require('../src/commandHelper/writeUserConfig');
 
 /**
  * Show the help output

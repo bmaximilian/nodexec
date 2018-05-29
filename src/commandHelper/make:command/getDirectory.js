@@ -6,8 +6,8 @@
 
 const { isObject } = require('lodash');
 const path = require('path');
-const isRelativePath = require('../../src/util/isRelativePath');
-const getParams = require('../../src/util/getParams');
+const isRelativePath = require('../../util/isRelativePath');
+const getParams = require('../../util/getParams');
 
 /**
  * Resolves the file directory
