@@ -22,7 +22,7 @@ module.exports = function getDirectory(options, params = ['-d', '--directory']) 
 
     let directory = getParams(options, params);
 
-    if (!directory) {
+    if (!directory || directory === '.') {
         directory = process.cwd();
     }
 
