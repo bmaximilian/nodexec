@@ -87,5 +87,5 @@ function addDirectory(options, config, command) {
 module.exports = {
     command: addDirectory,
     description: 'Add a directory to the user configuration',
-    scope: '/',
+    scope: '/system',
 };

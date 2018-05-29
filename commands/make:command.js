@@ -94,4 +94,5 @@ function makeCommand(options) {
 module.exports = {
     description: 'Create a command template',
     command: makeCommand,
+    scope: '/system',
 };

@@ -37,5 +37,5 @@ function listDirectories(options, config, command) {
 module.exports = {
     command: listDirectories,
     description: 'Lists the configured directories in the user config',
-    scope: '/',
+    scope: '/system',
 };
