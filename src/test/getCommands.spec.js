@@ -30,7 +30,10 @@ describe('getCommands', () => {
 
         const commands = getCommands(config);
         expect(commands).to.have.property('config:create');
-        expect(commands).to.have.property('say:hello');
+        expect(commands).to.have.property('add:directory');
+        expect(commands).to.have.property('list:directories');
+        expect(commands).to.have.property('remove:directory');
+        expect(commands).to.have.property('make:command');
     });
 
     it('Should throw without a valid configuration', () => {

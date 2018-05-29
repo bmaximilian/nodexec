@@ -23,7 +23,10 @@ describe('importFolder', () => {
     it('Should get all commands based on a specific function', () => {
         const commands = importFolder('commands');
         expect(commands).to.have.property('config:create');
-        expect(commands).to.have.property('say:hello');
+        expect(commands).to.have.property('add:directory');
+        expect(commands).to.have.property('list:directories');
+        expect(commands).to.have.property('remove:directory');
+        expect(commands).to.have.property('make:command');
     });
 
     it('Should throw without a valid configuration', () => {
