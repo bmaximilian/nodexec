@@ -42,7 +42,7 @@ function writeEditorOut(config, editor) {
         console.error(`It seems like your desired editor ${chalk
             .red(editor)} is not installed or available over the command line.`);
 
-        process.exit(0);
+        process.exit(1);
         return;
     }
 
@@ -86,7 +86,7 @@ function setEditor(options, config, command) {
         console.error(chalk.red('It seems like you don\'t have any editors installed.'));
         console.error();
         console.error('You need an editor that is available over the command line');
-        process.exit(0);
+        process.exit(1);
         return;
     }
 
@@ -112,7 +112,7 @@ function setEditor(options, config, command) {
         console.error(`The desired editor ${chalk.red(desiredEditor)} could not be found.`);
         console.error();
         console.error('You need an editor that is available over the command line');
-        process.exit(0);
+        process.exit(1);
         return;
     }
 
@@ -153,7 +153,7 @@ function setEditor(options, config, command) {
                                     console.error(`It seems like your desired editor ${chalk
                                         .red(customEditor)} is not installed or available over the command line.`);
 
-                                    process.exit(0);
+                                    process.exit(1);
                                 }
                             },
                             (err) => {
