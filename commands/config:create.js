@@ -10,7 +10,10 @@ const { userConfig: userConfigPath } = require('../src/util/paths');
  * @returns {void}
  */
 function createConfig(options) {
-    const initialConfig = {};
+    const initialConfig = {
+        directories: [],
+        editor: '',
+    };
 
     /**
      * Writes the config
