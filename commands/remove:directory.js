@@ -97,5 +97,5 @@ function removeDirectory(options, config, command) {
 module.exports = {
     command: removeDirectory,
     description: 'Remove a directory from the user configuration',
-    scope: '/system',
+    scope: '/nodexec-settings',
 };

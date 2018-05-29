@@ -176,5 +176,5 @@ function setEditor(options, config, command) {
 module.exports = {
     command: setEditor,
     description: 'Change the preferred editor nodexec uses to open files',
-    scope: '/',
+    scope: '/nodexec-settings',
 };

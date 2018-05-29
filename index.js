@@ -15,7 +15,7 @@ const commands = getCommands(config);
 if (isFunction(get(commands, `${enteredCommand}.command`))) {
     commands[enteredCommand].command(parseOptions(options), config, commands[enteredCommand]);
 } else {
-    console.log(chalk.magenta('Nodexec'));
+    console.log(chalk.blue('nodexec'));
     console.log();
 
     if (enteredCommand) {

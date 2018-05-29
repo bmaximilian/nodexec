@@ -66,5 +66,5 @@ function configEdit(options, config, command) {
 module.exports = {
     command: configEdit,
     description: 'Edit the configuration with your preferred editor',
-    scope: '/',
+    scope: '/nodexec-settings',
 };

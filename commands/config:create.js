@@ -45,5 +45,5 @@ function createConfig(options) {
 module.exports = {
     description: 'Creates the config directory in the user home and adds a empty config file.',
     command: createConfig,
-    scope: '/system',
+    scope: '/nodexec-settings',
 };

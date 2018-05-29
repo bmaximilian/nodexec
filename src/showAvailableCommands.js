@@ -15,7 +15,6 @@ function showAvailableCommands(commands) {
     let currentScope = '';
 
     console.log(chalk.magenta('Available commands:'));
-    console.log();
 
     sortedCommands.forEach((commandObject) => {
         const tabs = getTabsForLevel(commandObject.level);
