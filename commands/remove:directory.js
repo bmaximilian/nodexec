@@ -39,6 +39,12 @@ function removeDirectory(options, config, command) {
     if (!has(options, 'params') || !isArray(options.params) || isEmpty(options.params)) {
         console.error('No config specified');
         showHelp();
+        return;
+    }
+
+    if (options['-h'] || options['--help']) {
+        showHelp();
+        return;
     }
 
     console.log();

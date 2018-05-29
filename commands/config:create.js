@@ -12,16 +12,27 @@ const { userConfig: userConfigPath } = require('../src/util/paths');
 function createConfig(options) {
     const initialConfig = {};
 
-    if (!fs.existsSync(userConfigPath) || options['-f'] || options['--force']) {
+    /**
+     * Writes the config
+     * @returns {void}
+     */
+    const writeOut = () => {
+        fs.writeFile(userConfigPath, JSON.stringify(initialConfig, null, 2), (writeError) => {
+            if (writeError) throw writeError;
+
+            console.log(`${userConfigPath} written successfully.`);
+        });
+    };
+
+    const configExists = fs.existsSync(userConfigPath);
+    if (!configExists) {
         mkdirp(path.dirname(userConfigPath), (mkdirError) => {
             if (mkdirError) throw mkdirError;
 
-            fs.writeFile(userConfigPath, JSON.stringify(initialConfig, null, 2), (writeError) => {
-                if (writeError) throw writeError;
-
-                console.log(`${userConfigPath} written successfully.`);
-            });
+            writeOut();
         });
+    } else if (options['-f'] || options['--force']) {
+        writeOut();
     } else if (!options['--silent'] && !options['-s']) {
         console.log(`There is already a config at ${userConfigPath}.`);
         console.log('Use -f to overwrite');

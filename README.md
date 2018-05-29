@@ -34,7 +34,19 @@ You can use the following configuration options by default
 Specify the directories of your JavaScript commands. Every `.js`-File in this directory and sub directories will be available by calling `nodexec name-of-the-file-without-ending`.
 Commands from previous directories with the same name will be overwritten.
 
-You should specify absolute paths or path relative to your home directory (starting with `~`)
+You can simply add a directory with the following command:
+
+    $ nodexec add:directory <command_name> 
+    
+You can list all configured directories with:
+
+    $ nodexec list:directories
+    
+You can delete a directory with:
+
+    $ nodexec remove:directory
+
+If you edit the `config.json`, you should specify absolute paths or path relative to your home directory (starting with `~`)
 
 Example:
 ```json
