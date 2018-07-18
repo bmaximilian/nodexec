@@ -3,6 +3,7 @@ const {
     isArray, isObject, assign, includes,
 } = require('lodash');
 const fs = require('fs');
+const findUp = require('find-up');
 const { baseConfig: baseConfigPath, userConfig: userConfigPath } = require('./util/paths');
 
 /* eslint-disable import/no-dynamic-require, global-require */
