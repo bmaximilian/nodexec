@@ -1,9 +1,12 @@
 
 const {
-    isArray, isObject, assign, includes,
+    isArray,
+    isObject,
+    assign,
+    includes,
 } = require('lodash');
 const fs = require('fs');
-const findUp = require('find-up');
+const { sync: findUp } = require('find-up');
 const { baseConfig: baseConfigPath, userConfig: userConfigPath } = require('./util/paths');
 
 /* eslint-disable import/no-dynamic-require, global-require */
@@ -15,37 +18,60 @@ if (fs.existsSync(userConfigPath)) {
     userConfig = require(userConfigPath);
 }
 
+const folderConfigPath = findUp(['.nodexecrc', '.nodexecrc.json', '.nodexecrc.js']);
+let folderConfig = null;
+if (fs.existsSync(folderConfigPath)) {
+    const folderConfigRaw = fs.readFileSync(folderConfigPath);
+
+    try {
+        folderConfig = JSON.parse(folderConfigRaw);
+    } catch (e) {
+        folderConfig = require(folderConfigPath);
+    }
+}
+
 /**
  * Merges the configuration files
  * @param {Object} base : Object : The base configuration
  * @param {Object} merge : Object : The config that should be merged
  * @return {Object} : The merged configuration
  */
-function mergeConfig(base = baseConfig, merge = userConfig) {
+function mergeConfig(base = baseConfig, merge = [userConfig, folderConfig]) {
     if (!isObject(base)) {
         throw new Error('Parameter 1 needs to ba an object');
     }
 
-    if (merge && !isObject(merge)) {
-        throw new Error('Parameter 2 needs to ba an object when provided');
+    if (merge && !isObject(merge) && !isArray(merge)) {
+        throw new Error('Parameter 2 needs to ba an object or array when provided');
+    } else if (!merge) {
+        return base;
     }
+
+    let preparedMergeArray = !isArray(merge) ? [merge] : merge;
+    preparedMergeArray = preparedMergeArray.filter(configItem => isObject(configItem));
 
     const mergedConfig = base;
+    const mergeObject = preparedMergeArray.reduce(
+        (acc, config) => assign({}, acc, config),
+        {},
+    );
 
-    if (isArray(mergedConfig.directories) && isObject(merge) && isArray(merge.directories)) {
-        merge.directories.forEach((directory) => {
-            if (!includes(mergedConfig.directories, directory)) {
-                mergedConfig.directories.push(directory);
-            }
-        });
-    }
+    preparedMergeArray.forEach((configItem) => {
+        if (isArray(mergedConfig.directories) && isObject(configItem) && isArray(configItem.directories)) {
+            configItem.directories.forEach((directory) => {
+                if (!includes(mergedConfig.directories, directory)) {
+                    mergedConfig.directories.push(directory);
+                }
+            });
+        }
+    });
 
     return assign(
         {},
         mergedConfig,
         assign(
             {},
-            merge,
+            mergeObject,
             {
                 directories: mergedConfig.directories,
             },
