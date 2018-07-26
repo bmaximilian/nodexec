@@ -6,8 +6,10 @@ const {
     includes,
 } = require('lodash');
 const fs = require('fs');
+const path = require('path');
 const { sync: findUp } = require('find-up');
 const { baseConfig: baseConfigPath, userConfig: userConfigPath } = require('./util/paths');
+const isRelativePath = require('./util/isRelativePath');
 
 /* eslint-disable import/no-dynamic-require, global-require */
 
@@ -60,7 +62,11 @@ function mergeConfig(base = baseConfig, merge = [userConfig, folderConfig]) {
         if (isArray(mergedConfig.directories) && isObject(configItem) && isArray(configItem.directories)) {
             configItem.directories.forEach((directory) => {
                 if (!includes(mergedConfig.directories, directory)) {
-                    mergedConfig.directories.push(directory);
+                    let preparedDirectory = directory;
+                    if (configItem === folderConfig && isRelativePath(preparedDirectory)) {
+                        preparedDirectory = path.resolve(path.dirname(folderConfigPath), preparedDirectory);
+                    }
+                    mergedConfig.directories.push(preparedDirectory);
                 }
             });
         }
