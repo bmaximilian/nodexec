@@ -1,42 +1,21 @@
-#!/usr/bin/env node
 
-const { isFunction, get, isEmpty } = require('lodash');
-const chalk = require('chalk');
-const getCommands = require('./src/getCommands');
-const mergeConfig = require('./src/mergeConfig');
-const parseOptions = require('./src/util/parseOptions');
-const findMatchingCommands = require('./src/util/findMatchingCommands');
-const showAvailableCommands = require('./src/showAvailableCommands');
+const { isString } = require('lodash');
+const run = require('./src/run');
 
-const [_1, _2, enteredCommand, ...options] = process.argv;
-const config = mergeConfig();
-const commands = getCommands(config);
-
-if (isFunction(get(commands, `${enteredCommand}.command`))) {
-    commands[enteredCommand].command(parseOptions(options), config, commands[enteredCommand]);
-} else {
-    console.log(chalk.blue('nodexec'));
-    console.log();
-
-    if (enteredCommand) {
-        const relatedCommands = findMatchingCommands(commands, enteredCommand);
-
-        console.log(chalk.red('No command found for ') + chalk.blue(enteredCommand));
-        console.log();
-
-        if (!isEmpty(relatedCommands) && enteredCommand.length > 1) {
-            const commandMessageSingular = 'The most similar command is:';
-            const commandMessagePlural = 'The most similar commands are:';
-
-            console.log(chalk.magenta(relatedCommands.length === 0 ? commandMessageSingular : commandMessagePlural));
-
-            relatedCommands.forEach((relatedCommand) => {
-                console.log(`\t${chalk.blue(relatedCommand)}`);
-            });
-
-            console.log();
-        }
+/**
+ * Run a command passed as string
+ *
+ * @param {String} command : String : The passed command (like on the cli)
+ * @return {*} : The return value of the command
+ */
+function nodexec(command = '') {
+    if (!isString(command)) {
+        throw new Error('The passed command needs to be a string');
     }
 
-    showAvailableCommands(commands);
+    const [enteredCommand, ...options] = command.split(' ');
+
+    return run(enteredCommand, options);
 }
+
+module.exports = nodexec;

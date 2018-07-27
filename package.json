@@ -1,6 +1,6 @@
 {
   "name": "nodexec",
-  "version": "0.6.1",
+  "version": "0.7.0",
   "description": "A command line executor for javascript files.",
   "main": "index.js",
   "scripts": {
@@ -11,7 +11,7 @@
     "postinstall": "node index.js config:create --silent"
   },
   "preferGlobal": true,
-  "bin": "./index.js",
+  "bin": "./bin/index.js",
   "author": "Maximilian Beck <contact@maximilianbeck.de>",
   "repository": {
     "type": "git",
