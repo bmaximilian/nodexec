@@ -15,7 +15,7 @@ const [_1, _2, enteredCommand, ...options] = process.argv;
 
 const output = run(enteredCommand, options);
 
-if (output.error) {
+if (get(output, 'error', null)) {
     const commands = get(output, 'commands', {});
 
     console.log(chalk.blue('nodexec'));
