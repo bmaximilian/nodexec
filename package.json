@@ -1,6 +1,6 @@
 {
   "name": "nodexec",
-  "version": "0.7.1",
+  "version": "0.7.2",
   "description": "A command line executor for javascript files.",
   "main": "index.js",
   "scripts": {
