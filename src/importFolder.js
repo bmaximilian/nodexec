@@ -3,12 +3,14 @@ const glob = require('glob');
 const path = require('path');
 const os = require('os');
 const {
+    assign,
     isFunction,
     isString,
     isObject,
     get,
 } = require('lodash');
 const isRelativePath = require('./util/isRelativePath');
+const getCommandNames = require('./util/getCommandNames');
 const resolveFileNameFromPathWithoutEnding = require('./util/resolveFileNameFromPathWithoutEnding');
 const { resolvePathFromApp } = require('./util/paths');
 
@@ -36,6 +38,7 @@ function importFolder(folderDir) {
     glob.sync(`${importPath}/**/*.js`).forEach((file) => {
         const requiredCommandObject = require(path.resolve(file));
         const commandName = resolveFileNameFromPathWithoutEnding(file);
+        const allPossibleCommandNames = getCommandNames(commandName, requiredCommandObject);
         let commandObject = null;
 
         if (isFunction(requiredCommandObject)) {
@@ -44,18 +47,29 @@ function importFolder(folderDir) {
                 name: commandName,
                 description: '',
                 scope: '/',
+                aliases: allPossibleCommandNames.filter(name => name !== commandName),
             };
         } else if (isObject(requiredCommandObject) && isFunction(requiredCommandObject.command)) {
+            const appliedCommandName = get(requiredCommandObject, 'name', commandName);
             commandObject = {
                 command: requiredCommandObject.command,
-                name: commandName,
+                name: appliedCommandName,
                 description: get(requiredCommandObject, 'description', ''),
                 scope: get(requiredCommandObject, 'scope', '/'),
+                aliases: allPossibleCommandNames.filter(name => name !== appliedCommandName),
             };
         }
 
         if (commandObject) {
-            commands[commandName] = commandObject;
+            allPossibleCommandNames.forEach((possibleCommandName) => {
+                commands[possibleCommandName] = assign(
+                    {},
+                    commandObject,
+                    {
+                        isAlias: possibleCommandName !== commandObject.name,
+                    },
+                );
+            });
         }
     });
 
