@@ -9,7 +9,7 @@ const {
 } = require('lodash');
 const chalk = require('chalk');
 const { userConfig: userConfigPath } = require('../src/util/paths');
-const getDirectory = require('../src/commandHelper/make:command/getDirectory');
+const getDirectory = require('../src/commandHelper/make-command/getDirectory');
 const getUserConfig = require('../src/commandHelper/getUserConfig');
 const writeUserConfig = require('../src/commandHelper/writeUserConfig');
 
