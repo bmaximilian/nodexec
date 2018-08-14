@@ -12,7 +12,9 @@ function <commandFunction>(options, config, command) {
 }
 
 module.exports = {
+    name: '<commandName>',
     command: <commandFunction>,
     description: '',
     scope: '/',
+    aliases: [],
 };

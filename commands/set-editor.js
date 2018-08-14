@@ -130,14 +130,14 @@ function setEditor(options, config, command) {
             },
         ];
 
-        const prompt = inquirer.createPromptModule();
+        const interactivePrompt = inquirer.createPromptModule();
 
-        prompt(questions).then(
+        interactivePrompt(questions).then(
             (answers) => {
                 desiredEditor = get(answers, 'chosenEditor', desiredEditor);
 
                 if (desiredEditor === custom) {
-                    prompt([
+                    interactivePrompt([
                         {
                             message: 'What is your custom editor?',
                             name: 'customEditorName',
@@ -174,7 +174,9 @@ function setEditor(options, config, command) {
 }
 
 module.exports = {
+    name: 'set:editor',
     command: setEditor,
     description: 'Change the preferred editor nodexec uses to open files',
     scope: '/nodexec-settings',
+    aliases: [],
 };

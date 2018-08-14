@@ -96,7 +96,9 @@ function addDirectory(options, config, command) {
 }
 
 module.exports = {
+    name: 'add:directory',
     command: addDirectory,
     description: 'Add a directory to the user configuration',
     scope: '/nodexec-settings',
+    aliases: [],
 };

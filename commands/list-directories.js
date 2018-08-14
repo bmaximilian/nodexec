@@ -35,7 +35,9 @@ function listDirectories(options, config, command) {
 }
 
 module.exports = {
+    name: 'list:directories',
     command: listDirectories,
     description: 'Lists the configured directories in the user config',
     scope: '/nodexec-settings',
+    aliases: [],
 };

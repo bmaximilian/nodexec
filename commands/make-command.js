@@ -100,7 +100,9 @@ function makeCommand(options) {
 }
 
 module.exports = {
+    name: 'make:command',
     description: 'Create a command template',
     command: makeCommand,
     scope: '/helper',
+    aliases: [],
 };
