@@ -8,7 +8,7 @@
     "lint": "./node_modules/.bin/eslint --format './node_modules/eslint-friendly-formatter/index.js' .",
     "ci": "npm run lint && npm test",
     "coverage:coveralls": "./node_modules/.bin/nyc report --reporter=text-lcov | ./node_modules/coveralls/bin/coveralls.js",
-    "postinstall": "node bin/index.js config:create --silent"
+    "postinstall": "node bin/index.js config-create --silent"
   },
   "preferGlobal": true,
   "bin": "./bin/index.js",
