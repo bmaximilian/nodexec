@@ -53,7 +53,8 @@ function makeCommand(options) {
 
     const directory = getDirectory(options);
     const commandName = get(options, 'params[0]');
-    const template = resolvePathFromApp('src/commandHelper/make:command/commandTemplate.txt');
+    const commandFileName = commandName.toString().replace(/[:;]/g, '-');
+    const template = resolvePathFromApp('src/commandHelper/make-command/commandTemplate.txt');
 
     fs.readFile(template, 'utf8', (readError, data) => {
         if (readError) throw readError;
@@ -77,7 +78,7 @@ function makeCommand(options) {
          * @return {void}
          */
         const writeOut = () => {
-            fs.writeFile(path.resolve(directory, `${commandName}.js`), replacedTemplate, (writeError) => {
+            fs.writeFile(path.resolve(directory, `${commandFileName}.js`), replacedTemplate, (writeError) => {
                 if (writeError) throw writeError;
 
                 console.log(chalk.white('Created command ')
