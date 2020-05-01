@@ -8,7 +8,9 @@
     "lint": "./node_modules/.bin/eslint --format './node_modules/eslint-friendly-formatter/index.js' .",
     "ci": "npm run lint && npm test",
     "coverage:coveralls": "./node_modules/.bin/nyc report --reporter=text-lcov | ./node_modules/coveralls/bin/coveralls.js",
-    "postinstall": "node bin/index.js config-create --silent"
+    "postinstall": "node bin/index.js config-create --silent",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "preferGlobal": true,
   "bin": "./bin/index.js",
@@ -39,7 +41,8 @@
     "glob": "^7.1.2",
     "inquirer": "^5.2.0",
     "lodash": "^4.17.11",
-    "mkdirp": "^0.5.1"
+    "mkdirp": "^0.5.1",
+    "snyk": "^1.316.1"
   },
   "devDependencies": {
     "@types/chai": "^4.1.3",
@@ -79,5 +82,6 @@
     "cache": true,
     "all": true,
     "report-dir": "./coverage"
-  }
+  },
+  "snyk": true
 }
