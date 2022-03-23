@@ -39,7 +39,7 @@
     "glob": "^7.1.2",
     "inquirer": "^5.2.0",
     "lodash": "^4.17.21",
-    "mkdirp": "^0.5.1"
+    "mkdirp": "^0.5.2"
   },
   "devDependencies": {
     "@types/chai": "^4.1.3",
