@@ -36,7 +36,7 @@
     "command-exists": "^1.2.6",
     "find-up": "^3.0.0",
     "fuse.js": "^3.2.0",
-    "glob": "^7.1.2",
+    "glob": "^9.0.0",
     "inquirer": "^5.2.0",
     "lodash": "^4.17.21",
     "mkdirp": "^0.5.1"
